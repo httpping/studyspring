@@ -19,17 +19,16 @@ public class DemoControler {
     public String index(Model model){
 
 
-        log.debug("打印日志");
+//        log.debug("打印日志");
 
         model.addAttribute("headerTitle","来自DemoControler 动态配置的  Demo 数据，在网页显示");
 
         return "/login";
     }
 
-
     @GetMapping(value = "/api")
     public @ResponseBody String api(){
-        log.debug("这是 json 请求的 返回结果数据，不走html");
+//        log.debug("这是 json 请求的 返回结果数据，不走html");
         return "api 数据";
     }
 
