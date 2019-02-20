@@ -15,25 +15,31 @@
             <h1 class="text-center" style="line-height: 80px">Example heading</h1>
         </div>
         <div class="col-md-12 order-md-1">
-            <form class="needs-validation" novalidate action="/commit">
+            <form class="needs-validation" novalidate th:action="@{/commit}" method="post">
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="firstName">姓名</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <label for="name">姓名</label>
+                        <input type="text" class="form-control" id="name" placeholder="请输入姓名" name="name" required>
+                        <div class="invalid-feedback">
+                            请输入姓名
+                        </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="lastName">年龄</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <label for="age">年龄</label>
+                        <input type="number" class="form-control" id="age" placeholder="请输入年龄" name="age" required>
+                        <div class="invalid-feedback">
+                            请输入年龄
+                        </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="sex">性别</label>
-                        <select class="custom-select d-block w-100" id="sex" required>
+                        <select class="custom-select d-block w-100" id="sex" name="sex" required>
                             <option value="">选择性别</option>
                             <option>男</option>
                             <option>女</option>
                         </select>
                         <div class="invalid-feedback">
-                            Please select a valid country.
+                            请选择性别
                         </div>
                     </div>
                 </div>
