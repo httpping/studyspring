@@ -15,7 +15,7 @@
             <h1 class="text-center" style="line-height: 80px">Example heading</h1>
         </div>
         <div class="col-md-12 order-md-1">
-            <form class="needs-validation" novalidate th:action="@{/commit}" method="post">
+            <form class="needs-validation" novalidate th:action="@{/recordResult}" th:method="get">
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="name">姓名</label>
@@ -35,8 +35,7 @@
                         <label for="sex">性别</label>
                         <select class="custom-select d-block w-100" id="sex" name="sex" required>
                             <option value="">选择性别</option>
-                            <option>男</option>
-                            <option>女</option>
+                            <option th:each="item:${sexList}" th:text="${item}"></option>>
                         </select>
                         <div class="invalid-feedback">
                             请选择性别
@@ -92,8 +91,8 @@
                     </div>
                 </div>
 
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                <hr class="mb-2">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
             </form>
         </div>
     </div>

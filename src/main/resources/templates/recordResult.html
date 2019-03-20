@@ -15,16 +15,15 @@
         <div class="text-center">
             <h1>测试头</h1>
         </div>
-        <div>
             <div class="row">
                 <div class="div-border-noneRight col-md-4">
-                    <h style="line-height: 40px;">姓名:</h>
+                    <h style="line-height: 40px;" th:text="'姓名:' + ${name}"></h>
                 </div>
                 <div class="div-border-noneRight col-md-4">
-                    <h style="line-height: 40px;">年龄:</h>
+                    <h style="line-height: 40px;" th:text="'年龄:' + ${age}"></h>
                 </div>
                 <div class="div-border col-md-4">
-                    <h style="line-height: 40px;">性别:</h>
+                    <h style="line-height: 40px;" th:text="'性别:' + ${sex}"></h>
                 </div>
             </div>
             <div class="row">
@@ -75,10 +74,44 @@
                     <h>第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法第三个第四个地方郭德纲的说法</h>
                 </div>
             </div>
-        </div>
+
+            <div style="text-align: right;padding-top: 30px;text-indent: 15px;">
+                <h class="col-md-1">年</h>
+                <h class="col-md-1">月</h>
+                <h class="col-md-1">日</h>
+            </div>
+
+            <div class="row" style="text-align: right; line-height: 40px;">
+                <div class="col-md-1 offset-md-9">
+                    <p>签名:</p>
+                </div>
+            </div>
     </div>
+
+    <button type="button" class="btn btn-primary btn-lg" th:onclick="|javascript:exportWord()|">导出word</button>
+
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+        function exportWord() {
+            var currentUrl = window.location.href;
+            $.ajax({
+                type: "POST",
+                url: "/exportWord",
+                data: {
+                    "url" : currentUrl
+                },
+                success: function (data) {
+                    alert('success');
+                },
+                error: function (data) {
+                    alert('fail');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
